@@ -1,6 +1,151 @@
+:root {
+  /* A refined indigo/slate palette */
+  --color-accent: oklch(55% 0.18 260); 
+  --color-accent-soft: oklch(96% 0.04 260);
+  --border-color: oklch(90% 0.02 260);
+  --text-main: oklch(25% 0.02 260);
+  --bg-card: oklch(99% 0.01 260);
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
-  font: 100%/1.5 system-ui;
+  font: 100%/1.5 system-ui, -apple-system, sans-serif;
+  max-width: 100ch; 
+  margin-inline: auto;
+  padding: 1rem;
+  color: var(--text-main);
+  min-height: 100vh;
+  /* Added the inline border from your previous iteration */
+  border-inline: 1px solid var(--border-color);
+}
+
+/* Step 4.4: Finishing touches for all headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-top: 1.5em;
+}
+
+/* Step 4.4: Contrast adjustment for H1 (400%) */
+h1 {
+  font-size: 400%;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-accent);
+  border-bottom: 5px solid var(--color-accent);
+  padding-bottom: 0.3em;
+  display: inline-block; 
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.3em;
+  margin-bottom: 1rem;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 2em;
+  overflow: hidden;
+}
+
+nav ul, nav li {
+  display: contents;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.7em;
+  border-right: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+nav a:last-child {
+  border-right: none;
+}
+
+nav a.current {
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  border-bottom: 0.4em solid var(--color-accent);
+}
+
+nav a:hover:not(.current) {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+/* Step 3: Contact Form */
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+input, textarea, button {
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid oklch(50% 0 0); 
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+button {
+  grid-column: 1 / -1;
+  background-color: var(--color-accent);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  padding: 0.8em;
+}
+
+/* Step 4.2: Applying a responsive grid */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+/* Step 4.3: Horizontal alignment with subgrid */
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+  padding: 1.5em;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+/* Step 4.3: Resetting heading margin for alignment */
+.projects h2 {
+  margin: 0;
+  font-size: 1.5em;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.projects img {
+  width: 100%;
+  height: auto;
 }
