@@ -1,65 +1,49 @@
 :root {
-  /* A refined indigo/slate palette */
-  --color-accent: oklch(55% 0.18 260); 
-  --color-accent-soft: oklch(96% 0.04 260);
-  --border-color: oklch(90% 0.02 260);
-  --text-main: oklch(25% 0.02 260);
-  --bg-card: oklch(99% 0.01 260);
+  
+  --color-accent: oklch(60% 0.2 260); 
+
+  
+  --border-color: light-dark(oklch(85% 0.02 260), oklch(25% 0.02 260));
 }
 
 html {
   accent-color: var(--color-accent);
+  color-scheme: light dark;
 }
 
 body {
-  font: 100%/1.5 system-ui, -apple-system, sans-serif;
-  max-width: 100ch; 
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
   margin-inline: auto;
   padding: 1rem;
-  color: var(--text-main);
-  min-height: 100vh;
-  /* Added the inline border from your previous iteration */
   border-inline: 1px solid var(--border-color);
+  min-height: 100vh;
+  
+  background-color: light-dark(oklch(99% 0 0), oklch(15% 0.02 260));
 }
 
-/* Step 4.4: Finishing touches for all headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
+  
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.2em;
   margin-top: 1.5em;
+  color: var(--color-accent);
 }
 
-/* Step 4.4: Contrast adjustment for H1 (400%) */
 h1 {
   font-size: 400%;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--color-accent);
-  border-bottom: 5px solid var(--color-accent);
-  padding-bottom: 0.3em;
-  display: inline-block; 
-  margin-bottom: 1rem;
+  border-bottom-width: 3px;
 }
 
-h2 {
-  font-size: 2rem;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.3em;
-  margin-bottom: 1rem;
-}
-
-/* Navigation */
 nav {
   display: flex;
-  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 12px; 
   margin-bottom: 2em;
   overflow: hidden;
-}
-
-nav ul, nav li {
-  display: contents;
+  background-color: light-dark(oklch(96% 0.01 260), oklch(20% 0.02 260));
 }
 
 nav a {
@@ -69,7 +53,7 @@ nav a {
   color: inherit;
   padding: 0.7em;
   border-right: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  transition: 0.2s; 
 }
 
 nav a:last-child {
@@ -77,16 +61,22 @@ nav a:last-child {
 }
 
 nav a.current {
-  background-color: oklch(from var(--color-accent) 95% 5% h);
-  border-bottom: 0.4em solid var(--color-accent);
+  background-color: light-dark(oklch(90% 0.05 260), oklch(30% 0.05 260));
+  border-bottom: 0.3em solid var(--color-accent);
+  font-weight: bold;
 }
 
-nav a:hover:not(.current) {
-  background-color: var(--color-accent-soft);
-  color: var(--color-accent);
+nav a:hover {
+  background-color: var(--color-accent);
+  color: white;
 }
 
-/* Step 3: Contact Form */
+input, textarea, button, .projects article {
+  background-color: canvas;
+  color: canvastext;
+  border: 1px solid var(--border-color);
+}
+
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -97,15 +87,14 @@ input, textarea, button {
   font: inherit;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid oklch(50% 0 0); 
-  padding: 0.5em;
-  border-radius: 4px;
+  border: 1px solid var(--border-color); 
+  padding: 0.6em;
+  border-radius: 6px;
 }
 
-label {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1;
+input:focus, textarea:focus {
+  outline: 2px solid var(--color-accent);
+  border-color: transparent;
 }
 
 button {
@@ -116,36 +105,39 @@ button {
   cursor: pointer;
   border: none;
   padding: 0.8em;
+  border-radius: 6px;
+  transition: transform 0.1s, filter 0.2s;
 }
 
-/* Step 4.2: Applying a responsive grid */
+button:hover {
+  filter: brightness(1.2);
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1em;
+  gap: 1.5em;
 }
 
-/* Step 4.3: Horizontal alignment with subgrid */
 .projects article {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
   gap: 1em;
+  border: 2px solid var(--border-color);
   padding: 1.5em;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  background: var(--bg-card);
+  border-radius: 16px;
 }
 
-/* Step 4.3: Resetting heading margin for alignment */
-.projects h2 {
-  margin: 0;
-  font-size: 1.5em;
-  border-bottom: none;
-  padding-bottom: 0;
+section {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1.5em;
+  margin-bottom: 2.5em;
 }
 
-.projects img {
-  width: 100%;
-  height: auto;
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
