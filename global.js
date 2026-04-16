@@ -17,7 +17,7 @@ document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") 
   ? "/" 
-  : "https://ctruong0615.github.io"; 
+  : "https://ctruong0615.github.io/portfolio/"; 
 
 for (let p of pages) {
   let url = p.url;
