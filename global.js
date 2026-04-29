@@ -91,17 +91,26 @@ export async function fetchJSON(url) {
 }
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // Clear the container first
     containerElement.innerHTML = '';
 
     for (let project of projects) {
         const article = document.createElement('article');
 
+        // Step 0.1: Wrap description and year in a div to prevent grid overlap 
+        // Adding the project year using 'c. YYYY' format [cite: 92]
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${project.image}" alt="${project.title}">
-            <p>${project.description}</p>
+            <div class="project-details">
+                <p>${project.description}</p>
+                <p class="project-year" style="font-family: Baskerville; font-variant-numeric: oldstyle-nums;">
+                    c. ${project.year}
+                </p>
+            </div>
         `;
 
         containerElement.appendChild(article);
     }
 }
+

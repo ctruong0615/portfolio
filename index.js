@@ -23,7 +23,7 @@ async function fetchGitHubData(username) {
                 <dt>Following:</dt><dd>${data.following}</dd>
             </dl>
         `;
-    }
+    } 
 }
 
 fetchGitHubData('ctruong0615');

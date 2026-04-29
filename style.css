@@ -141,3 +141,92 @@ section {
   right: 1rem;
   font-size: 80%;
 }
+
+#projects-plot {
+    max-width: 20em;    /* This is the main "shrinker" */
+    margin-block: 2em; /* Adds space above and below */
+    overflow: visible; /* Prevents edges from being cut off if you add hover effects later */
+}
+
+
+/* Step 2.3: Layout side-by-side */
+.container {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+}
+
+
+/* Step 1.2: Limit size */
+#projects-plot {
+    max-width: 20em;
+    margin-block: 2em;
+    overflow: visible;
+}
+
+
+/* Step 2.2: Legend and Swatch Styling */
+
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+    flex: 1;
+    list-style: none;
+    padding: 1em;
+    border: 1px solid #ccc;
+
+
+}
+
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+
+}
+
+
+.swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: var(--color);
+    border-radius: 50%;
+}
+/* Step 5.1: Hover effects for all wedges */
+path {
+  transition: 300ms;
+  cursor: pointer;
+  outline: none;
+}
+
+
+/* Dim other wedges when one is hovered */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+
+/* Step 5.2: Visual feedback for the selected wedge */
+path.selected {
+  fill: #2894bb;
+  stroke: white;        
+  stroke-width: 2px;
+  opacity: 1;
+}
+
+
+/* Highlight the legend item as well */
+.legend-item.selected {
+  font-weight: bold;
+}
+
+
+.legend-item.selected .swatch {
+  outline: 2px solid rgb(36, 187, 56);
+  outline-offset: 2px;
+}
