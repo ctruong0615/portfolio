@@ -143,13 +143,13 @@ section {
 }
 
 #projects-plot {
-    max-width: 20em;    /* This is the main "shrinker" */
-    margin-block: 2em; /* Adds space above and below */
-    overflow: visible; /* Prevents edges from being cut off if you add hover effects later */
+    max-width: 20em;   
+    margin-block: 2em; 
+    overflow: visible; 
 }
 
 
-/* Step 2.3: Layout side-by-side */
+
 .container {
     display: flex;
     align-items: center;
@@ -157,7 +157,7 @@ section {
 }
 
 
-/* Step 1.2: Limit size */
+
 #projects-plot {
     max-width: 20em;
     margin-block: 2em;
@@ -165,7 +165,7 @@ section {
 }
 
 
-/* Step 2.2: Legend and Swatch Styling */
+
 
 
 .legend {
@@ -197,7 +197,7 @@ section {
     background-color: var(--color);
     border-radius: 50%;
 }
-/* Step 5.1: Hover effects for all wedges */
+
 path {
   transition: 300ms;
   cursor: pointer;
@@ -205,13 +205,11 @@ path {
 }
 
 
-/* Dim other wedges when one is hovered */
 svg:has(path:hover) path:not(:hover) {
   opacity: 0.5;
 }
 
 
-/* Step 5.2: Visual feedback for the selected wedge */
 path.selected {
   fill: #2894bb;
   stroke: white;        
@@ -220,7 +218,6 @@ path.selected {
 }
 
 
-/* Highlight the legend item as well */
 .legend-item.selected {
   font-weight: bold;
 }
@@ -230,3 +227,75 @@ path.selected {
   outline: 2px solid rgb(36, 187, 56);
   outline-offset: 2px;
 }
+
+/* Step 1.3: Stats Dashboard Grid */
+/* Step 1.3: Centered Stats Grid */
+/* Target all stats blocks (Summary and Language Breakdown) */
+/* Container for both Summary Stats and Language Breakdown */
+/* This targets both the top stats and the language breakdown stats */
+.stats, #language-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1em;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-block: 2em;
+    padding: 1.5em;
+    background: var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+
+/* Ensure ALL labels (dt) look the same */
+.stats dt, #language-breakdown dt {
+    grid-row: 1;
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+    /* This ensures they aren't forced into all-caps by CSS */
+    text-transform: none;
+    font-family: inherit;
+    font-weight: normal;
+}
+
+
+/* Ensure ALL values (dd) look the same */
+.stats dd, #language-breakdown dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: inherit;
+}
+/* Step 3.2: Tooltip Styling */
+.tooltip {
+    position: fixed;
+    background: light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.9));
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    pointer-events: none; /* Step 3.3 */
+    opacity: 0;
+    transition: opacity 200ms;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+/* Step 5.4: Brushing Highlights */
+circle.selected {
+    fill: #ff6b6b;
+    opacity: 1;
+}
+
+
+.gridlines line { stroke: #eee; }
+
+
+/* Brush box styling */
+.selection {
+    fill-opacity: 0.1;
+    stroke: var(--color-accent);
+    stroke-dasharray: 5, 5;
+}
+
+

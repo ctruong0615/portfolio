@@ -15,7 +15,7 @@ let selectedIndex = -1;
 let query = '';
 
 
-let selectedYear = null; // Top of file
+let selectedYear = null; 
 
 
 function renderFilteredProjects() {
@@ -24,7 +24,7 @@ function renderFilteredProjects() {
         let matchesSearch = values.includes(query);
 
 
-        // Filter by the actual year string
+   
         if (selectedYear) {
             return matchesSearch && project.year === selectedYear;
         }
@@ -63,7 +63,7 @@ function renderPieChart(projectsToShow) {
     svg.append('path')
        .attr('d', arcGenerator(d))
        .attr('fill', colors(i))
-       // FIX: Use selectedYear to determine the 'selected' class
+     
        .attr('class', d.data.label === selectedYear ? 'selected' : '')
        .on('click', () => {
            let clickedYear = data[i].label;
@@ -77,14 +77,14 @@ function renderPieChart(projectsToShow) {
 
     legend.append('li')
           .attr('style', `--color:${colors(i)}`)
-          // FIX: Use selectedYear here too so the legend highlights
+     
           .attr('class', `legend-item ${d.data.label === selectedYear ? 'selected' : ''}`)
           .html(`<span class="swatch"></span> ${d.data.label} <em>(${d.data.value})</em>`);
     });
 }
 
 
-// Initial Render
+
 renderProjects(projects, projectsContainer, 'h2');
 renderPieChart(projects);
 if (projectsTitle) {
@@ -92,17 +92,16 @@ if (projectsTitle) {
 }
 
 
-// Search Listener
 let searchInput = document.querySelector('#projects-search');
 searchInput.addEventListener('input', (event) => {
     query = event.target.value.toLowerCase();
 
 
-    // Call the central filter function
+
     renderFilteredProjects();
 
 
-    // We still update the pie chart based on the search query
+
     let searchFiltered = projects.filter(p =>
         Object.values(p).join('\n').toLowerCase().includes(query)
     );
