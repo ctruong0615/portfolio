@@ -228,11 +228,7 @@ path.selected {
   outline-offset: 2px;
 }
 
-/* Step 1.3: Stats Dashboard Grid */
-/* Step 1.3: Centered Stats Grid */
-/* Target all stats blocks (Summary and Language Breakdown) */
-/* Container for both Summary Stats and Language Breakdown */
-/* This targets both the top stats and the language breakdown stats */
+
 .stats, #language-breakdown {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -250,52 +246,73 @@ path.selected {
 /* Ensure ALL labels (dt) look the same */
 .stats dt, #language-breakdown dt {
     grid-row: 1;
-    margin-bottom: 0.5em;
-    font-size: 2rem;
-    /* This ensures they aren't forced into all-caps by CSS */
-    text-transform: none;
-    font-family: inherit;
-    font-weight: normal;
+    margin-bottom: 0.2em; /* Reduced margin for tighter grouping */
+    font-size: 0.85rem; /* Smaller, uppercase labels look more professional */
+    text-transform: uppercase; /* Standard for data dashboards */
+    letter-spacing: 0.05em;
+    font-family: var(--font-main);
+    font-weight: 500;
+    color: #666; /* Subtle color for labels to make values pop */
 }
-
 
 /* Ensure ALL values (dd) look the same */
 .stats dd, #language-breakdown dd {
     grid-row: 2;
     margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: inherit;
+    font-size: 2.5rem; /* Slightly larger for emphasis */
+    font-weight: 800; /* Extra bold for a "big data" feel */
+    font-family: var(--font-main);
+    line-height: 1;
 }
+
 /* Step 3.2: Tooltip Styling */
 .tooltip {
     position: fixed;
-    background: light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.9));
+    background: light-dark(rgba(255, 255, 255, 0.95), rgba(20, 20, 20, 0.95));
     border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-    pointer-events: none; /* Step 3.3 */
+    padding: 12px;
+    border-radius: 8px; /* Softer corners */
+    pointer-events: none;
     opacity: 0;
     transition: opacity 200ms;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    font-family: var(--font-main);
+    font-size: 0.9rem;
 }
 
+/* Style the DL inside the tooltip to be compact */
+.tooltip dl {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px 15px;
+    margin: 0;
+}
+
+.tooltip dt {
+    font-weight: normal;
+    color: #888;
+}
+
+.tooltip dd {
+    font-weight: bold;
+    margin: 0;
+}
 
 /* Step 5.4: Brushing Highlights */
 circle.selected {
-    fill: #ff6b6b;
+    fill: #0cc58d;
     opacity: 1;
 }
 
-
-.gridlines line { stroke: #eee; }
-
+/* Gridlines: Making them more subtle so the dots stand out */
+.gridlines line { 
+    stroke: #eee; 
+    stroke-width: 1px;
+}
 
 /* Brush box styling */
 .selection {
     fill-opacity: 0.1;
-    stroke: var(--color-accent);
-    stroke-dasharray: 5, 5;
+    stroke: #0cc58d; /* Match your selection color */
+    stroke-dasharray: 4, 4;
 }
-
-
