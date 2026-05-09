@@ -49,6 +49,20 @@ function displayStats() {
     dl.append('dd').text(data.length);
     dl.append('dt').text('TOTAL COMMITS');
     dl.append('dd').text(commits.length);
+
+    const numFiles = new Set(data.map(d => d.file)).size;
+    dl.append('dt').text('FILES');
+    dl.append('dd').text(numFiles);
+
+    const maxDepth = d3.max(data, d => d.depth);
+    dl.append('dt').text('MAX DEPTH');
+    dl.append('dd').text(maxDepth);
+
+    const workByDay = d3.rollup(commits, (v) => v.length, (d) => d.datetime.getDay());
+    const days = ['Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thurs.', 'Fri.', 'Sat.'];
+    const maxDayEntry = d3.greatest(workByDay, (d) => d[1]);
+    dl.append('dt').text('MOST ACTIVE DAY');
+    dl.append('dd').text(days[maxDayEntry[0]]);
 }
 
 
