@@ -129,6 +129,26 @@ button:hover {
   border-radius: 16px;
 }
 
+/* Styling for project links */
+.projects article h2 a {
+    text-decoration: none;
+    color: inherit; /* Keeps the heading color you already have */
+    transition: color 0.2s ease-in-out;
+}
+
+.projects article h2 a:hover {
+    color: #007bff; /* Or whatever your accent color is */
+    text-decoration: underline;
+}
+
+/* Optional: Make the image clickable too if you'd like */
+.projects article img {
+    border-radius: 8px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 section {
   border-left: 4px solid var(--color-accent);
   padding-left: 1.5em;

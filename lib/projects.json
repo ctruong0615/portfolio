@@ -12,10 +12,11 @@
         "description": "This project involves engineering dialogue interaction logic and state management systems with C# in Unity."
     },
     {
-        "title": "Dicta omnis debitis eligendi?",
-        "year": "2024",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quos perspiciatis dolore at rerum odit possimus maiores facilis tempore, deserunt vel molestiae impedit consequuntur, officia aliquam. Rerum ratione aspernatur labore nesciunt incidunt alias, nisi reiciendis nam quibusdam quas eligendi."
+        "title": "Bikewatching Visualization",
+        "year": "2026",
+        "image": "../images/bikewatching.png",
+        "description": "This project involves creating a visualization to understand BlueBike patterns in the city of Boston and Cambridge.",
+        "url": "https://ctruong0615.github.io/bike-watching-visualization/"
     },
     {
         "title": "Nobis adipisci magnam cum!",

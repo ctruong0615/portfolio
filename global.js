@@ -98,11 +98,19 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     for (let project of projects) {
         const article = document.createElement('article');
 
-        // Step 0.1: Wrap description and year in a div to prevent grid overlap 
-        // Adding the project year using 'c. YYYY' format [cite: 92]
+        // Make title clickable if url exists
+        const titleHtml = project.url 
+            ? `<${headingLevel}><a href="${project.url}" target="_blank">${project.title}</a></${headingLevel}>`
+            : `<${headingLevel}>${project.title}</${headingLevel}>`;
+
+        // Make image clickable if url exists
+        const imageHtml = project.url
+            ? `<a href="${project.url}" target="_blank"><img src="${project.image}" alt="${project.title}"></a>`
+            : `<img src="${project.image}" alt="${project.title}">`;
+
         article.innerHTML = `
-            <${headingLevel}>${project.title}</${headingLevel}>
-            <img src="${project.image}" alt="${project.title}">
+            ${titleHtml}
+            ${imageHtml}
             <div class="project-details">
                 <p>${project.description}</p>
                 <p class="project-year" style="font-family: Baskerville; font-variant-numeric: oldstyle-nums;">
