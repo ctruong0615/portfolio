@@ -336,3 +336,142 @@ circle.selected {
     stroke: #0cc58d; /* Match your selection color */
     stroke-dasharray: 4, 4;
 }
+
+/* This targets both the top stats and the language breakdown stats */
+.stats, #language-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1em;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-block: 2em;
+    padding: 1.5em;
+    background: var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+
+/* Ensure ALL labels (dt) look the same */
+.stats dt, #language-breakdown dt {
+    grid-row: 1;
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+    /* This ensures they aren't forced into all-caps by CSS */
+    text-transform: none;
+    font-family: inherit;
+    font-weight: normal;
+}
+
+
+/* Ensure ALL values (dd) look the same */
+.stats dd, #language-breakdown dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: inherit;
+}
+/* Step 3.2: Tooltip Styling */
+.tooltip {
+    position: fixed;
+    background: light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.9));
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    pointer-events: none; /* Step 3.3 */
+    opacity: 0;
+    transition: opacity 200ms;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+/* Step 5.4: Brushing Highlights */
+circle.selected {
+    fill: #4521d6;
+    opacity: 1;
+}
+
+
+.gridlines line { stroke: #eee; }
+
+
+/* Brush box styling */
+.selection {
+    fill-opacity: 0.1;
+    stroke: var(--color-accent);
+    stroke-dasharray: 5, 5;
+}
+/* --- SCROLLYTELLING LAYOUT --- */
+
+/* Put the story and the plot side-by-side */
+#scrolly-1, #scrolly-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+/* Make the charts sticky so they stay on screen while text scrolls */
+#scatter-plot, #file-plot {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    max-height: calc(100vh - 4rem);
+}
+
+/* Style the scrolling text blocks and add space between them */
+.step {
+    margin-bottom: 50vh; /* Creates the empty space needed to scroll */
+    padding: 1.5em;
+    background-color: light-dark(oklch(96% 0.01 260), oklch(20% 0.02 260));
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.step:last-child {
+    margin-bottom: 20vh;
+}
+
+
+/* --- CODEBASE EVOLUTION DOTS --- */
+
+/* Give the file container scrollability if it gets too long */
+#files {
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* Align the filename and the line count on opposite sides */
+#files dt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+#files dt code {
+    font-size: 0.9em;
+}
+
+#files dt small {
+    color: #888;
+    font-size: 0.8em;
+}
+
+/* Wrap the line dots into a grid-like cluster */
+#files dd {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0 0 2em 0;
+}
+
+/* Shape and size the individual colored line dots */
+.loc {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}

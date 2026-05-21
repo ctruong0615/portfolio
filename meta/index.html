@@ -8,21 +8,32 @@
 </head>
 <body>
     <h1>Meta</h1>
-    <p>Below this is a detailed analysis that is based on the evolution of the project's codebase.
-
+    <h2>Below this is a detailed analysis that is based on the evolution of the project's codebase</h2>
 
     <div id="stats"></div>
 
+    <h2>Evolution over time</h2>
+    <div id="scrolly-1">
+        <div id="scatter-story"></div>
 
-    <h2>Commits by the Time of the Day</h2>
-    <div id="chart"></div>
-   
+        <div id="scatter-plot">
+            <h3>Commits by the Time of the Day</h3>
+            <div id="chart"></div>
+
+            <p id="selection-count">No commits selected</p>
+            <dl id="language-breakdown" class="stats"></dl>
+        </div>
+    </div>
+
     <div id="tooltip" class="tooltip"></div>
 
-
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
-
+    <h2>Codebase evolution</h2>
+    <div id="scrolly-2">
+        <div id="file-plot">
+            <dl id="files"></dl>
+        </div>
+        <div id="file-story"></div>
+    </div>
 
     <script type="module" src="main.js"></script>
 </body>
